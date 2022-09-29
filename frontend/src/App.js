@@ -7,7 +7,7 @@ import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Home from './Pages/Home';
 import RequireAuth from "./Components/RequireAuth";
-
+import Frontpage from "./Pages/Frontpage";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -21,6 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/home" element={<Frontpage/>}/>
       </Routes>
 
     </div>
