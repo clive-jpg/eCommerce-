@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-image{
+  background-image: url("https://source.unsplash.com/WEQbe2jBg40/600x1200");
+  background-size: cover;
+  background-position: center;
+}
+.login{
+  min-height: 100vh;
+}
