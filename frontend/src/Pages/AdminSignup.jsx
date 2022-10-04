@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginThunk } from "../redux/authSlice";
+import { adminsignupThunk } from "../redux/adminAuthSlice";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { facebookLoginThunk } from "../redux/authSlice";
-import FacebookLogin from "react-facebook-login";
 
-export default function Login() {
-
+export default function Signup() {
   const [credentials, setCredentials] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -22,7 +20,7 @@ export default function Login() {
 
   useEffect(() => {
     isAuthenticated && navigate("/");
-  }, [isAuthenticated, navigate])
+  }, [isAuthenticated, navigate]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,13 +29,9 @@ export default function Login() {
       [name]: value,
     }));
   };
-
-  const responseFacebook = (userInfo) => {
- 
-    dispatch(facebookLoginThunk(userInfo));
-  };
   return (
     <div>
+      <h1>Admin Signup</h1>
       <div className="App">
         <div class="container-fluid ps-md-0">
           <div class="row g-0">
@@ -47,10 +41,23 @@ export default function Login() {
                 <div class="container">
                   <div class="row">
                     <div class="col-md-9 col-lg-8 mx-auto">
-                      <h3 class="login-heading mb-4">Welcome back!</h3>
+                      <h3 class="login-heading mb-4">
+                        Admin Signup
+                      </h3>
                       <Form>
                         <FormGroup floating>
                           <Input
+                            id="name"
+                            name="name"
+                            placeholder="name"
+                            type="name"
+                            onChange={handleChange}
+                          />
+                          <Label for="name">Name</Label>
+                        </FormGroup>{" "}
+                        <FormGroup floating>
+                          <Input
+                            id="exampleEmail"
                             name="email"
                             placeholder="Email"
                             type="email"
@@ -68,30 +75,19 @@ export default function Login() {
                           <Label for="examplePassword">Password</Label>
                         </FormGroup>{" "}
                         <Button
-                          style={{ padding: "14px 40px", margin: "0 9px" }}
+                          style={{ padding: "14px 20px", margin: "0 10px" }}
                           onClick={() =>
-                            dispatch(loginThunk(credentials)).then(() =>
-                              navigate("/")
+                            dispatch(adminsignupThunk(credentials)).then(() =>
+                              navigate("/login")
                             )
                           }
                         >
-                          Login
+                          Submit
                         </Button>
-                        <Button
-                          style={{ padding: "14px 40px" }}
-                          onClick={() => navigate("/signup")}
-                        >
-                          Create an Account
+                        <Button style={{ padding: "14px 30px" }} onClick={()=> navigate("/admin/login")}>
+                          Already have an account
                         </Button>
                       </Form>
-                      <div>
-                        <FacebookLogin
-                          appId={process.env.REACT_APP_FACEBOOK_LOGIN}
-                          autoLoad={false}
-                          fields="name,email"
-                          callback={responseFacebook}
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>

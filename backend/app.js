@@ -17,13 +17,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const AuthRouter = require("./Routers/AuthRouter");
-const AuthService = require("./Services/AuthService")
+const AuthService = require("./Services/AuthService");
+
+const AdminService = require("./Services/AdminService");
+const AdminRouter = require("./Routers/AdminRouter");
+
+const ProductRouter = require("./Routers/Products");
+const ProductService = require("./Services/ProductService")
+
 
 app.use(auth.initialize());
 
 let authService = new AuthService(knex);
+let productService = new ProductService(knex);
+let adminService = new AdminService(knex);
 
 app.use("/auth", new AuthRouter(express, authService).router());
+app.use("/profile", new ProductRouter(express, productService).router());
+app.use("/admin", new AdminRouter(express, adminService ).router());
 
 // app.post("/auth/signup", async (req,res)=>{
 //     const {name, email, password} = req.body;
