@@ -23,7 +23,7 @@ class AuthRouter {
 
   signup(req, res) {
     return this.authService
-      .signup(req.body.email, req.body.name, req.body.password)
+      .signup(req.body.name,req.body.email ,req.body.phone_number, req.body.password)
       .then((result) => {
         res.send(result);
       })

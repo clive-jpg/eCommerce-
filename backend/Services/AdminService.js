@@ -2,14 +2,14 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-class AuthService {
+class AdminService {
   constructor(knex) {
     this.knex = knex;
   }
 
   async login(email, password) {
       console.log(email, password);
-    let user = await this.knex("customer").where({ email}).first();
+    let user = await this.knex("admin_users").where({ email}).first();
     console.log(user)
     if (user) {
         let result = await bcrypt.compare(password, user.password);
@@ -23,16 +23,16 @@ class AuthService {
     return token;
   } }}
 
-  async signup(name, email, phone_number, password){
+  async signup(name, email,phone_number, password){
     //   let query = await this.knex("customer").where({name: name, email: email}).first();
       const hashed = await bcrypt.hash(password,10);
       password = hashed;
      
-    let result = await this.knex("customer").insert({name, email, phone_number, password}).returning("id");
+    let result = await this.knex("admin_users").insert({name, email,phone_number, password}).returning("id");
     return result;
 
 
   }
 }
 
-module.exports = AuthService;
+module.exports = AdminService;

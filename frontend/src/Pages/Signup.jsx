@@ -8,6 +8,7 @@ export default function Signup() {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
+    phone_number: "",
     password: "",
   });
 
@@ -31,7 +32,6 @@ export default function Signup() {
   };
   return (
     <div>
-      <h1>Signup</h1>
       <div className="App">
         <div class="container-fluid ps-md-0">
           <div class="row g-0">
@@ -64,6 +64,15 @@ export default function Signup() {
                             onChange={handleChange}
                           />
                           <Label for="exampleEmail">Email</Label>
+                        </FormGroup>{" "}
+                        <FormGroup floating>
+                          <Input
+                            name="phonenumber"
+                            placeholder="Phone Number"
+                            type="number"
+                            onChange={handleChange}
+                          />
+                          <Label for="phonenumber">Phone Number</Label>
                         </FormGroup>{" "}
                         <FormGroup floating>
                           <Input

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginThunk } from "../redux/authSlice";
+import { adminloginThunk } from "../redux/adminAuthSlice";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { facebookLoginThunk } from "../redux/authSlice";
-import FacebookLogin from "react-facebook-login";
 
 export default function Login() {
 
@@ -32,12 +30,9 @@ export default function Login() {
     }));
   };
 
-  const responseFacebook = (userInfo) => {
- 
-    dispatch(facebookLoginThunk(userInfo));
-  };
   return (
     <div>
+      <h1>Admin Login</h1>
       <div className="App">
         <div class="container-fluid ps-md-0">
           <div class="row g-0">
@@ -70,7 +65,7 @@ export default function Login() {
                         <Button
                           style={{ padding: "14px 40px", margin: "0 9px" }}
                           onClick={() =>
-                            dispatch(loginThunk(credentials)).then(() =>
+                            dispatch(adminloginThunk(credentials)).then(() =>
                               navigate("/")
                             )
                           }
@@ -79,19 +74,11 @@ export default function Login() {
                         </Button>
                         <Button
                           style={{ padding: "14px 40px" }}
-                          onClick={() => navigate("/signup")}
+                          onClick={() => navigate("/admin/signup")}
                         >
                           Create an Account
                         </Button>
                       </Form>
-                      <div>
-                        <FacebookLogin
-                          appId={process.env.REACT_APP_FACEBOOK_LOGIN}
-                          autoLoad={false}
-                          fields="name,email"
-                          callback={responseFacebook}
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>

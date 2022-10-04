@@ -5,8 +5,8 @@ const initialState = {
   isAuthenticated: false || localStorage.getItem("Token") != null,
 };
 
-export const authSlice = createSlice({
-  name: "auth",
+export const adminSlice = createSlice({
+  name: "authAdmin",
   initialState,
   reducers: {
     login: (state) => {
@@ -18,11 +18,11 @@ export const authSlice = createSlice({
   },
 });
 // Action creators are generated for each case reducer function
-export const { login, logout } = authSlice.actions;
+export const { login, logout } = adminSlice.actions;
 
-export default authSlice.reducer;
+export default adminSlice.reducer;
 
-export const signupThunk =
+export const adminsignupThunk =
   ({ name, email,phone_number, password }) =>
   async () => {
     await axios.post(`${process.env.REACT_APP_BACKEND}/auth/signup`, {
@@ -33,7 +33,7 @@ export const signupThunk =
     });
   };
 
-export const loginThunk =
+export const adminloginThunk =
   ({ email, password }) =>
   async (dispatch) => {
     console.log(email, password);
@@ -50,18 +50,9 @@ export const loginThunk =
     }
   };
 
-export const logoutThunk = () => async (dispatch) => {
+export const adminlogoutThunk = () => async (dispatch) => {
   localStorage.removeItem("Token");
   dispatch(logout());
   console.log("Logout running");
 };
 
-//facebook
-export const facebookLoginThunk = (userInfo) => async (dispatch) => {
-  let response = await axios.post(
-    `${process.env.REACT_APP_BACKEND}/auth/facebook`,
-    { userInfo }
-  );
-  localStorage.setItem("Token", response.data.token);
-  dispatch(login());
-};
