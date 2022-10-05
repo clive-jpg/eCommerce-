@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from './Components/Navbar';
+import NavbarTop from './Components/NavbarTop';
 import Signup from "./Pages/Signup"
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
@@ -18,7 +18,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <NavbarTop/>
       <Routes>
         <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
         <Route path="/signup" element={<Signup/>}/>
