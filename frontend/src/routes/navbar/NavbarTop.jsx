@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+
+import './navbar.styles.scss'
 import { Button } from 'react-bootstrap';
 
 import CartIcon from "../../Components/cart-icon/cart-icon.component";
@@ -10,14 +12,14 @@ import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component
 
 import { LinkContainer } from "react-router-bootstrap";
 
-import { CartContext } from "../../context/cart.context";
+import { CartContext } from "../../contexts/cart.context";
 
 export default function NavbarTop() {
   const { isCartOpen } = useContext(CartContext);
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" className="nav-bar">
         <Container>
         <LinkContainer to="/home">
             <Navbar.Brand href="#home">LOGO</Navbar.Brand>

@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsProvider } from "./context/products.context";
-import { CartProvider } from "./context/cart.context";
+import { ProductsProvider } from "./contexts/products.context";
+import { CartProvider } from "./contexts/cart.context";
 // Stripe Payment
 import { Elements } from "@stripe/react-stripe-js";
 import { stripePromise } from "./utils/stripe/stripe.utils";
