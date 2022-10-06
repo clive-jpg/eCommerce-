@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LogoutButton from "../Components/LogoutButton"
+import LogoutButton from "../Components/button/LogoutButton"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { logoutThunk } from '../redux/authSlice';
