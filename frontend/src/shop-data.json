@@ -3,24 +3,48 @@
         "id": 1,
         "name": "Rolex Submariner",
         "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637775995674354348.jpg?w=1183&h=1183&auto=compress,format",
-        "price": "$2500"
+        "price": 4000
       },
       {
         "id": 2,
         "name": "Rolex",
         "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637715368395460622.jpg?w=1183&h=1183&auto=compress,format",
-        "price": "$4000"
+        "price": 4000
       },
       {
         "id": 3,
         "name": "Rolex Daytona Cosmograph 116508",
         "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637889684188739294_role358990_4679866_87424_40-25.jpg?w=1183&h=1183&auto=compress,format",
-        "price": "$4000"
+        "price": 4000
       },
       {
         "id": 4,
         "name": "Rolex Daytona",
         "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637997883237044906_role339750_4662623_86509_40-1.jpg?w=1183&h=1183&auto=compress,format",
-        "price": "$4000"
+        "price": 4000
+      },
+      {
+        "id": 5,
+        "name": "Rolex Daytona",
+        "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637997883237044906_role339750_4662623_86509_40-1.jpg?w=1183&h=1183&auto=compress,format",
+        "price": 4000
+      },
+      {
+        "id": 6,
+        "name": "Rolex Daytona",
+        "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637997883237044906_role339750_4662623_86509_40-1.jpg?w=1183&h=1183&auto=compress,format",
+        "price": 4000
+      },
+      {
+        "id": 7,
+        "name": "Rolex Daytona",
+        "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637997883237044906_role339750_4662623_86509_40-1.jpg?w=1183&h=1183&auto=compress,format",
+        "price": 4000
+      },
+      {
+        "id": 8,
+        "name": "Rolex Daytona",
+        "imageUrl": "https://watchbox-cdn.imgix.net/posted-product-images/637997883237044906_role339750_4662623_86509_40-1.jpg?w=1183&h=1183&auto=compress,format",
+        "price": 4000
       }
     ]

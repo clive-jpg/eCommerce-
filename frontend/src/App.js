@@ -11,6 +11,7 @@ import Frontpage from "./Pages/Frontpage";
 import AdminSignUp from "./Pages/AdminSignup";
 import AdminLogin from "./Pages/AdminLogin";
 import Shop from './routes/shop/shop.component'
+import Checkout from "./routes/checkout/checkout.component";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/home" element={<Frontpage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/signup" element={<AdminSignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
       </Routes>
