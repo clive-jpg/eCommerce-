@@ -4,6 +4,8 @@ import { CartContext } from '../../contexts/cart.context';
 
 import CheckoutItem from '../../Components/checkout-item/checkout-item.component';
 
+import PaymentForm from '../../Components/payment-form/payment-form.component';
+
 import './checkout.styles.scss';
 
 const Checkout = () => {
@@ -31,7 +33,8 @@ const Checkout = () => {
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-          <div className='total'>TOTAL: ${ cartTotal }</div>
+          <div className='total'>TOTAL: ${cartTotal}</div>
+          <PaymentForm />
     </div>
   );
 };
