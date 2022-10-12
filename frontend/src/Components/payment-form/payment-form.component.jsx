@@ -55,6 +55,12 @@ const PaymentForm = () => {
 
       // Confirm the Card Payment
       console.log(`Confirming Card Payment`);
+    
+      // Get the client secret
+      const {
+        paymentIntent: { client_secret },
+      } = intent;
+      console.log(`Client Secret =` + client_secret);
 
       const paymentResult = await stripe.confirmCardPayment(
         paymentIntent.client_secret,
@@ -76,11 +82,6 @@ const PaymentForm = () => {
         }
       }
 
-      //get the client secret
-      const {
-        paymentIntent: { client_secret },
-      } = intent;
-      console.log(`Client Secret =` + client_secret);
 
       console.log(`Card Payment Successful`);
     } catch (err) {
