@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles.jsx";
 
@@ -12,78 +12,81 @@ const PaymentForm = () => {
     e.preventDefault();
     console.log("paymentHandler is working");
 
-  //   //If no Stripe instance or Elements instance, exit
-  //   if (!stripe || !elements) {
-  //     console.log("no Stripe instance or Elements instance, exiting");
-  //     return;
-  //   }
+    //   //If no Stripe instance or Elements instance, exit
+    //   if (!stripe || !elements) {
+    //     console.log("no Stripe instance or Elements instance, exiting");
+    //     return;
+    //   }
 
-  //   const intent = await fetch("/.netlify/functions/create-payment-intent", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       amount: 4800,
-  //       currency: "usd",
-  //     })
-  //     // headers: {
-  //     //   "Content-Type": "application/json",
-  //     // },
-  //     //   body: JSON.stringify({ amount: 10000 }), //testing for now
-  //     // }).then((res) => {
-  //     //   return res.json();
-  //     // });
-  //   });
+    //   const intent = await fetch("/.netlify/functions/create-payment-intent", {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       amount: 4800,
+    //       currency: "usd",
+    //     })
+    //     // headers: {
+    //     //   "Content-Type": "application/json",
+    //     // },
+    //     //   body: JSON.stringify({ amount: 10000 }), //testing for now
+    //     // }).then((res) => {
+    //     //   return res.json();
+    //     // });
+    //   });
 
-  //   const {paymentIntent} = await intent.json();
+    //   const {paymentIntent} = await intent.json();
 
-  //   console.log("payment intent received ");
-  //   console.log(intent);
-  // };
-    
-    
-        // PROCEED WITH CARD PROCESSING
-        try {
-          // Get the Payment Intent
-          console.log(`Retrieving the payment intent.`)
-          const intent = await fetch("/.netlify/functions/create-payment-intent", {
-            method: "POST",
-            body: JSON.stringify({
-              amount: 4800,
-              currency: "usd",
-            }),
-          })
-          const { paymentIntent } = await intent.json()
-          console.log(`Successfully retrieved the payment intent.`)
-    
-          // Confirm the Card Payment
-          console.log(`Confirming Card Payment`)
+    //   console.log("payment intent received ");
+    //   console.log(intent);
+    // };
 
-          const paymentResult = await stripe.confirmCardPayment(paymentIntent.client_secret, {
-            payment_method: {
-              card: elements.getElement(CardElement),
-              billing_details: {
-                name: 'Clive Kam'
-              }
+    // PROCEED WITH CARD PROCESSING
+    try {
+      // Get the Payment Intent
+      console.log(`Retrieving the payment intent.`);
+      const intent = await fetch("/.netlify/functions/create-payment-intent", {
+        method: "POST",
+        body: JSON.stringify({
+          amount: 4800,
+          currency: "usd",
+        }),
+      });
+      const { paymentIntent } = await intent.json();
+      console.log(`Successfully retrieved the payment intent.`);
+
+      // Confirm the Card Payment
+      console.log(`Confirming Card Payment`);
+
+      const paymentResult = await stripe.confirmCardPayment(
+        paymentIntent.client_secret,
+        {
+          payment_method: {
+            card: elements.getElement(CardElement),
+            billing_details: {
+              name: "Clive Kam",
             },
-          })
+          },
+        }
+      );
 
-          if (paymentResult.error) {
-            alert(paymentResult.error);
-          } else {
-            if (paymentResult.paymentIntent.status === 'succeeded') {
-              alert('Payment successful')
-            }
-          }
-
-          //get the client secret 
-          const { paymentIntent: { client_secret }, } = intent;
-          console.log(`Client Secret =`+ client_secret);
-
-          console.log(`Card Payment Successful`)
-        } catch (err) {
-          console.log(err)
+      if (paymentResult.error) {
+        alert("Payment Not Successful");
+      } else {
+        if (paymentResult.paymentIntent.status === "succeeded") {
+          alert("Payment successful");
         }
       }
-    
+
+      //get the client secret
+      const {
+        paymentIntent: { client_secret },
+      } = intent;
+      console.log(`Client Secret =` + client_secret);
+
+      console.log(`Card Payment Successful`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <PaymentFormContainer>
