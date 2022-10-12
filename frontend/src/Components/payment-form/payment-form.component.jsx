@@ -44,7 +44,7 @@ const PaymentForm = () => {
         try {
           // Get the Payment Intent
           console.log(`Retrieving the payment intent.`)
-          const intent = await fetch("/.netlify/functions/create-npm install stripe --savepayment-intent", {
+          const intent = await fetch("/.netlify/functions/create-payment-intent", {
             method: "POST",
             body: JSON.stringify({
               amount: 4800,
