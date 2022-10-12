@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LogoutButton from "../Components/button/LogoutButton"
+
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { logoutThunk } from '../redux/authSlice';
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div><h1>This is Home Page</h1>
    <button onClick={()=> dispatch(logoutThunk())}>Logout</button>
-   <LogoutButton/>
+  
   
    </div>
   )

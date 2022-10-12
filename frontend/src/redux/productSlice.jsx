@@ -19,13 +19,16 @@ export const productSlice = createSlice({
     deleteProduct: (state,action)=>{
       let index = state.todos.findIndex((i)=> i.id === action.payload.id)
       state.todos.splice(index,1)
+    },
+    getProductHistory: (state,action)=>{
+      state.products = action.payload;
     }
   
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { getProduct,addProduct,deleteProduct } = productSlice.actions
+export const { getProduct,addProduct,deleteProduct,getProductHistory } = productSlice.actions
 
 export default productSlice.reducer;
 
@@ -38,6 +41,17 @@ export const getProductThunk = () => async (dispatch) =>{
     });
     console.log(response.data)
     dispatch(getProduct(response.data))
+};
+
+export const getProductHistoryThunk = () => async (dispatch) =>{
+  const token = localStorage.getItem("Token");
+    const response = await axios(`${process.env.REACT_APP_BACKEND}/profile/purchase_history`,{
+      headers: {
+        Authorization:`Bearer ${token}`,
+      }
+    });
+    console.log(response.data)
+    dispatch(getProductHistory(response.data))
 };
 
 // export const addTodosThunk = (todo) => async (dispatch) =>{
