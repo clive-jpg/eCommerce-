@@ -1,6 +1,6 @@
+import React from 'react';
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles.jsx";
-
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
@@ -10,23 +10,80 @@ const PaymentForm = () => {
 
   const paymentHandler = async (e) => {
     e.preventDefault();
-    console.log("paymentHandler is WIP");
+    console.log("paymentHandler is working");
 
-    //If no Stripe instance or Elements instance, exit
-    if (!stripe || !elements) {
-      return;
-    }
+  //   //If no Stripe instance or Elements instance, exit
+  //   if (!stripe || !elements) {
+  //     console.log("no Stripe instance or Elements instance, exiting");
+  //     return;
+  //   }
 
-    const response = await fetch("/.netlify/functions/create-payment-intent", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: 10000 }), //testing for now
-    }).then((res) => res.json());
+  //   const intent = await fetch("/.netlify/functions/create-payment-intent", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       amount: 4800,
+  //       currency: "usd",
+  //     })
+  //     // headers: {
+  //     //   "Content-Type": "application/json",
+  //     // },
+  //     //   body: JSON.stringify({ amount: 10000 }), //testing for now
+  //     // }).then((res) => {
+  //     //   return res.json();
+  //     // });
+  //   });
 
-    console.log(response);
-  };
+  //   const {paymentIntent} = await intent.json();
+
+  //   console.log("payment intent received ");
+  //   console.log(intent);
+  // };
+    
+    
+        // PROCEED WITH CARD PROCESSING
+        try {
+          // Get the Payment Intent
+          console.log(`Retrieving the payment intent.`)
+          const intent = await fetch("/.netlify/functions/create-payment-intent", {
+            method: "POST",
+            body: JSON.stringify({
+              amount: 4800,
+              currency: "usd",
+            }),
+          })
+          const { paymentIntent } = await intent.json()
+          console.log(`Successfully retrieved the payment intent.`)
+    
+          // Confirm the Card Payment
+          console.log(`Confirming Card Payment`)
+
+          const paymentResult = await stripe.confirmCardPayment(paymentIntent.client_secret, {
+            payment_method: {
+              card: elements.getElement(CardElement),
+              billing_details: {
+                name: 'Clive Kam'
+              }
+            },
+          })
+
+          if (paymentResult.error) {
+            alert(paymentResult.error);
+          } else {
+            if (paymentResult.paymentIntent.status === 'succeeded') {
+              alert('Payment successful')
+            }
+          }
+
+          //get the client secret 
+          const { paymentIntent: { client_secret }, } = intent;
+          console.log(`Client Secret =`+ client_secret);
+
+          console.log(`Card Payment Successful`)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    
 
   return (
     <PaymentFormContainer>
