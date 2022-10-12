@@ -1,5 +1,5 @@
 require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")("sk_test_51LpQ4tJI3BiICUEOdF7JqH40nfagLYfjF8kT32WfEWV9fgssJzvrISDMD2EumzL98iOSfq2wN1qvpgOlVTwpzZKz00hfrptpHX");
 
 exports.handler = async (event, context, callback) => {
   const { amount, currency } = JSON.parse(event.body);
@@ -8,7 +8,7 @@ exports.handler = async (event, context, callback) => {
   try {
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount,
+      amount: amount,
       currency: currency,
       payment_method_types: ["card"],
     });
