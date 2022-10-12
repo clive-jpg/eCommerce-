@@ -1,6 +1,12 @@
 import React from "react";
 import "./Cards.css";
 import CardItem from "./CardItems";
+import cardImg1 from "./watchImage/watch1.png"
+import cardImg2 from "./watchImage/watch2.png"
+import cardImg3 from "./watchImage/watch3.png"
+import cardImg4 from "./watchImage/watch4.png"
+import cardImg5 from "./watchImage/watch5.png"
+
 
 function Cards() {
   return (
@@ -10,13 +16,13 @@ function Cards() {
         <div className="cards__wrapper">
           <ul className="cards__items">
             <CardItem
-              src="./watchImages/watch1.png"
+              src={cardImg1}
               text="Sea Master Perfect For the Ocean"
               label="Omega"
               path="/product1"
             />
             <CardItem
-              src="./watchImages/watch2.png"
+              src={cardImg2}
               text="Speed Master Your Need For Speed"
               label="Omega"
               path="/services"
@@ -24,19 +30,19 @@ function Cards() {
           </ul>
           <ul className="cards__items">
             <CardItem
-              src="./watchImages/watch3.png"
+              src={cardImg3}
               text="Constellation Gaze For The Stars"
               label="Omega"
               path="/services"
             />
             <CardItem
-              src="./watchImages/watch4.png"
+              src={cardImg4}
               text="Smaller Sea Master for Thinner Wrists"
               label="Omega"
               path="/products"
             />
             <CardItem
-              src="./watchImages/watch5.png"
+              src={cardImg5}
               text="Speed Master Black Edition,  Dark But Sharp"
               label="Omega"
               path="/sign-up"
