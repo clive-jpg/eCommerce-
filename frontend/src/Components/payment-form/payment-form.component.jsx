@@ -56,15 +56,27 @@ const PaymentForm = () => {
     
           // Confirm the Card Payment
           console.log(`Confirming Card Payment`)
-          await stripe.confirmCardPayment(paymentIntent.client_secret, {
+
+          const paymentResult = await stripe.confirmCardPayment(paymentIntent.client_secret, {
             payment_method: {
               card: elements.getElement(CardElement),
+              billing_details: {
+                name: 'Clive Kam'
+              }
             },
           })
 
+          if (paymentResult.error) {
+            alert(paymentResult.error);
+          } else {
+            if (paymentResult.paymentIntent.status === 'succeeded') {
+              alert('Payment successful')
+            }
+          }
+
           //get the client secret 
           const { paymentIntent: { client_secret }, } = intent;
-          console.log(client_secret);
+          console.log(`Client Secret =`+ client_secret);
 
           console.log(`Card Payment Successful`)
         } catch (err) {
