@@ -61,6 +61,11 @@ const PaymentForm = () => {
               card: elements.getElement(CardElement),
             },
           })
+
+          //get the client secret 
+          const { paymentIntent: { client_secret }, } = intent;
+          console.log(client_secret);
+
           console.log(`Card Payment Successful`)
         } catch (err) {
           console.log(err)
