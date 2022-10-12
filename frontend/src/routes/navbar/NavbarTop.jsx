@@ -26,7 +26,7 @@ export default function NavbarTop() {
           </LinkContainer>
           
           <Nav className="ml-auto">
-          <LinkContainer to="/home"><Nav.Link href="#">Home</Nav.Link></LinkContainer>
+          <LinkContainer to="/"><Nav.Link href="#">Home</Nav.Link></LinkContainer>
           <LinkContainer to="/profile"><Nav.Link href="#">Profile</Nav.Link></LinkContainer>
           <LinkContainer to="/shop"><Nav.Link href="/shop">Shop</Nav.Link></LinkContainer>
           <LinkContainer to="/Contact"><Nav.Link href="#">Contact</Nav.Link></LinkContainer>

@@ -26,16 +26,14 @@ function App() {
           path="/"
           element={
             <RequireAuth>
-              <Home />
+              <Home2 />
             </RequireAuth>
           }
         />
-        <Route path='/' element={<Home2/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/home" element={<Frontpage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/signup" element={<AdminSignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
