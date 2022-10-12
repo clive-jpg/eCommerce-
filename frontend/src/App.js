@@ -13,9 +13,9 @@ import AdminLogin from "./Pages/AdminLogin";
 import Shop from './routes/shop/shop.component'
 import Checkout from "./routes/checkout/checkout.component";
 import ErrorPage from "./Pages/ErrorPage";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import Home2 from "./Components/Home/home";
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path='/' element={<Home2/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
