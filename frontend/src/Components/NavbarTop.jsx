@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Button} from 'react-bootstrap';
+import LogoutButton from "../Components/button/LogoutButton"
 
 export default function NavbarTop() {
   return (
@@ -15,9 +16,7 @@ export default function NavbarTop() {
             <Nav.Link href="#">Home</Nav.Link>
             <Nav.Link href="#">Profile</Nav.Link>
             <Nav.Link href="#">Contact</Nav.Link>
-            <div className="buttons">
-              <Button variant="outline-secondary">Logout</Button>{" "}
-            </div>
+            <LogoutButton/>
           </Nav>
         </Container>
       </Navbar>

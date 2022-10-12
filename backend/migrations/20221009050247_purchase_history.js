@@ -2,19 +2,17 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
-    return knex.schema.createTable("customer_cart", function(table){
+ exports.up = function(knex) {
+    return knex.schema.createTable("purchase_history", (table)=>{
         table.increments();
         table.integer("customer_id").unsigned();
-        table.foreign("customer_id").references("customer.id");
-        table.integer("product_id");
-        table.string("product_name");
-        table.string("description");
+        table.integer("product_id").unsigned();
         table.integer("unit");
+        table.string("product_name");
         table.float("price");
-
+        table.string("status")
+        table.timestamps(false, true);
     })
-  
 };
 
 /**
@@ -22,6 +20,6 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTable("customer_cart");
+    return knex.schema.dropTable("purchase_history");
   
 };
