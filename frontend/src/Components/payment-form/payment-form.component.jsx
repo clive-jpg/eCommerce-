@@ -58,10 +58,9 @@ const PaymentForm = () => {
     
       // Get the client secret
       const clientSecret = intent.paymentIntent.client_secret;
-      console.log(`Client Secret =` + clientSecret);
 
       const paymentResult = await stripe.confirmCardPayment(
-        paymentIntent.client_secret,
+        clientSecret,
         {
           payment_method: {
             card: elements.getElement(CardElement),
