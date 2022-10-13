@@ -13,6 +13,7 @@ import CartDropdown from "../../Components/cart-dropdown/cart-dropdown.component
 import { LinkContainer } from "react-router-bootstrap";
 
 import { CartContext } from "../../contexts/cart.context";
+import LogoutButton from "../../Components/button/LogoutButton";
 
 export default function NavbarTop() {
   const { isCartOpen } = useContext(CartContext);
@@ -31,7 +32,7 @@ export default function NavbarTop() {
           <LinkContainer to="/shop"><Nav.Link href="/shop">Shop</Nav.Link></LinkContainer>
           <LinkContainer to="/Contact"><Nav.Link href="#">Contact</Nav.Link></LinkContainer>
             <div className="buttons">
-              <Button variant="outline-secondary">Logout</Button>{" "}
+          <LogoutButton/>
             </div>
             <CartIcon />
             {isCartOpen && <CartDropdown />}

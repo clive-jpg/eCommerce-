@@ -89,6 +89,21 @@ app.post("/auth/facebook", async (req,res)=>{
     }
   })
 
+  app.post("/auth/google", async(req,res)=>{
+    let userInfo = req.body.userInfo;
+    let user = await knex("customer").where({google_id: userInfo.id}).first();
+    if(!user){
+      let id = await knex("customer").inserr({google_id, name: userInfo.name, email: userInfo.email}).returning("id");
+      const payload = {
+        id : id[0].id,
+        name: userInfo.name,
+      }
+      const token = jwt.sign(payload, process.env.JWT_SECRET);
+      res.json({token})
+    }
+
+  })
+
 
 app.listen(port, ()=>{
     console.log(`Application listening to port ${port}`)
