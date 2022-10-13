@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductThunk } from "../redux/productSlice";
 import { getProductHistoryThunk } from "../redux/productSlice";
 import "react-edit-text/dist/index.css";
+import WidgetLg from "../Components/widgetLg/WidgetLg";
+import WidgetSm from "../Components/widgetSm/WidgetSm";
 
 export default function Profile() {
   const products = useSelector((state) => state.productReducer.products);
@@ -18,39 +20,65 @@ export default function Profile() {
 
   return (
     <div className="container">
-      <React.Fragment>
-          <div style={{whiteSpace: 'nowrap'}}>
-            <strong><label className="mr-2">Full Name : </label></strong>
-            <EditText id="fullName" name="fullName" defaultValue="Full Name" inline/>
-          </div>
-          <div style={{whiteSpace: 'nowrap'}}>
-            <strong><label className="mr-2">Email Address: </label></strong>
-            <EditText name="email" type="email" style={{width: '200px'}} defaultValue="email@domain.com" inline/>
-          </div>
-          <div style={{whiteSpace: 'nowrap'}}>
-            <strong><label className="mr-2">Phone Number: </label></strong>
-            <EditText name="age" type="number" style={{width: '200px'}} defaultValue="34" inline/>
-          </div>
-          <div style={{ display: 'flex' }}>
-            <strong>
-              <label className='mr-2' style={{ paddingTop: '2px' }}>Address: </label>
-            </strong>
-            <EditTextarea
-              name='description'
-              rows={4}
-              
-              style={{ paddingTop: 0 }}
-              placeholder='Enter a description'
-            />
-          </div>
-        </React.Fragment>
+      {/* <React.Fragment>
+        <div style={{ whiteSpace: "nowrap" }}>
+          <strong>
+            <label className="mr-2">Full Name : </label>
+          </strong>
+          <EditText
+            id="fullName"
+            name="fullName"
+            defaultValue="Full Name"
+            inline
+          />
+        </div>
+        <div style={{ whiteSpace: "nowrap" }}>
+          <strong>
+            <label className="mr-2">Email Address: </label>
+          </strong>
+          <EditText
+            name="email"
+            type="email"
+            style={{ width: "200px" }}
+            defaultValue="email@domain.com"
+            inline
+          />
+        </div>
+        <div style={{ whiteSpace: "nowrap" }}>
+          <strong>
+            <label className="mr-2">Phone Number: </label>
+          </strong>
+          <EditText
+            name="age"
+            type="number"
+            style={{ width: "200px" }}
+            defaultValue="34"
+            inline
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          <strong>
+            <label className="mr-2" style={{ paddingTop: "2px" }}>
+              Address:{" "}
+            </label>
+          </strong>
+          <EditTextarea
+            name="description"
+            rows={4}
+            style={{ paddingTop: 0 }}
+            placeholder="Enter a description"
+          />
+        </div>
+      </React.Fragment> */}
       <div className="row">
         {products &&
           products.map((data) => (
             <div className="col-sm-6 col-md-4 col-lg-3">
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
-                  <Card.Title>Order No # {Math.floor(Math.random() * 100) + 1} </Card.Title>
+                  <Card.Title>
+                    Order No # {Math.floor(Math.random() * 100) + 1}{" "}
+                  </Card.Title>
                   <Card.Text>{data.name}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
@@ -65,28 +93,11 @@ export default function Profile() {
               </Card>
             </div>
           ))}
-
-        {/* <div className="container">
-        <div className="d-flex text-center justify-content-center align-items-center">
-          <Card style={{ width: "25rem" }}>
-            <Card.Body>
-              <Card.Title> Order number </Card.Title>
-              <Card.Text>Date Status</Card.Text>
-              <hr />
-
-              <div className="row">
-                <div className="col">
-                  <img alt="" />
-                </div>
-                <div className="col">
-                  <p>Name</p>
-                  <p>Unit</p> <p>Price</p>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
+        <div className="homeWidgets">
+        <WidgetSm/>
+        <WidgetLg/>
+         
         </div>
-      </div> */}
       </div>
     </div>
   );

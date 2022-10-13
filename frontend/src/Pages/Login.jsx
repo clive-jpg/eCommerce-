@@ -4,7 +4,8 @@ import { loginThunk } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { facebookLoginThunk } from "../redux/authSlice";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { FaFacebookSquare } from "react-icons/fa";
 
 export default function Login() {
 
@@ -33,7 +34,6 @@ export default function Login() {
   };
 
   const responseFacebook = (userInfo) => {
- 
     dispatch(facebookLoginThunk(userInfo));
   };
   return (
@@ -84,12 +84,16 @@ export default function Login() {
                           Create an Account
                         </Button>
                       </Form>
-                      <div>
+                      <br/>
+                      <div className="col">
                         <FacebookLogin
                           appId={process.env.REACT_APP_FACEBOOK_LOGIN}
                           autoLoad={false}
                           fields="name,email"
                           callback={responseFacebook}
+                          render={renderProps => (
+                            <Button onClick={renderProps.onClick} variant="outline-primary"><FaFacebookSquare /></Button>
+                        )}
                         />
                       </div>
                     </div>
