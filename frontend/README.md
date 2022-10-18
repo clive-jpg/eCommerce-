@@ -1,70 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Watch 4 You
 
-## Available Scripts
+Full Stack app e-commerce app which allows customer to buy watches.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+-  ``npm install ``(installs dependencies listed in package.json)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- add .env file and configure with the following crenditals
+```
+DB_NAME =
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+DB_USERNAME =
 
-### `npm test`
+DB_PASSWORD =
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+SECRET_KEY =
 
-### `npm run build`
+FACEBOOK_APP_ID =
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+FACEBOOK_SECRET =
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+GOOGLE_ID =
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+GOOGLE_SECRET = 
+```
 
-### `npm run eject`
+- ``knex migrate:latest`` (to add the table to the database)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ``knex seed:run``
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- run ``nodemon index.js`` on terminal
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- go to https://localhost.3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## How to run the application.
 
-## Learn More
+- Once on the link, users will be redirected to "/" homepage with get request.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Register using email or sign in using facebook or google.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Passport Strategies 
 
-### Code Splitting
+#### Local Strategy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- local-signup
 
-### Analyzing the Bundle Size
+- local-login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- bcrypt method to hash and compare password
 
-### Making a Progressive Web App
+- serialize and deserialize
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Facebook Strategy
 
-### Advanced Configuration
+- facebook login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- serialize and deserialize

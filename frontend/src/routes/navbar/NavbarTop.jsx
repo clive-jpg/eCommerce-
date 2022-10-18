@@ -23,7 +23,7 @@ export default function NavbarTop() {
       <Navbar bg="dark" variant="dark" className="nav-bar">
         <Container>
         <LinkContainer to="/home">
-            <Navbar.Brand href="#home">LOGO</Navbar.Brand>
+            <Navbar.Brand href="#home">Watch 4 You</Navbar.Brand>
           </LinkContainer>
           
           <Nav className="ml-auto">
