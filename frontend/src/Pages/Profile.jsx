@@ -7,7 +7,7 @@ import { getProductThunk } from "../redux/productSlice";
 import { getProductHistoryThunk } from "../redux/productSlice";
 import "react-edit-text/dist/index.css";
 import WidgetLg from "../Components/widgetLg/WidgetLg";
-import WidgetSm from "../Components/widgetSm/WidgetSm";
+
 
 export default function Profile() {
   const products = useSelector((state) => state.productReducer.products);
@@ -20,6 +20,7 @@ export default function Profile() {
 
   return (
     <div className="container">
+      <h1>Profile </h1>
       {/* <React.Fragment>
         <div style={{ whiteSpace: "nowrap" }}>
           <strong>
@@ -86,15 +87,14 @@ export default function Profile() {
                   <ListGroup.Item>Price: ${data.price}</ListGroup.Item>
                   <ListGroup.Item>{data.status}</ListGroup.Item>
                 </ListGroup>
-                <Card.Body>
-                  <Card.Link href="#">Card Link</Card.Link>
-                  <Card.Link href="#">Another Link</Card.Link>
-                </Card.Body>
+              
               </Card>
             </div>
           ))}
+        <br/>
         <div className="homeWidgets">
-        <WidgetSm/>
+   
+        <br/>
         <WidgetLg/>
          
         </div>

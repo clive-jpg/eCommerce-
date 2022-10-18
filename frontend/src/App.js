@@ -33,9 +33,9 @@ function App() {
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+        <Route path="/shop" element={<RequireAuth><Shop /></RequireAuth>} />
+        <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/signup" element={<AdminSignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
